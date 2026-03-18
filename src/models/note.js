@@ -19,9 +19,15 @@ const noteSchema = new mongoose.Schema(
       default: "Todo",
       trim: true,
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
   },
   {
     timestamps: true,
+    versionKey: false,
   }
 );
 
