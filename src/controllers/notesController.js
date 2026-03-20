@@ -57,7 +57,7 @@ export const createNote = async (req, res, next) => {
       ...noteData,
       userId: req.user._id,
     });
-    
+
     const savedNote = await newNote.save();
     res.status(201).json(savedNote);
   } catch (error) {
@@ -87,7 +87,7 @@ export const updateNote = async (req, res, next) => {
       { _id: noteId, userId: req.user._id },
       updatedData,
       {
-        new: true,
+        returnDocument: 'after',
         runValidators: true,
       }
     );
