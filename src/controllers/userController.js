@@ -12,7 +12,7 @@ export const updateUserAvatar = async (req, res, next) => {
     const user = await User.findByIdAndUpdate(
       req.user._id,
       { avatar: photo.secure_url },
-      { new: true }
+      { returnDocument: 'after' }
     );
 
     res.json({
